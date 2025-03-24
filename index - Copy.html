@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body class="overflow-x-hidden">
+    <!-- Header -->
+    <header class="p-8 mx-auto max-w-7xl">
+      <div class="flex items-center justify-between">
+        <!-- Logo -->
+        <div class="flex items-center text-white">
+          <img src="./images/logo-bookmark.svg" alt="logo-bookmark" />
+        </div>
+        <!-- Navigation -->
+        <nav>
+          <ul class="flex gap-6">
+            <li><button>FEATURES</button></li>
+            <li><button>PRICING</button></li>
+            <li><button>CONTACT</button></li>
+            <li><button>LOGIN</button></li>
+          </ul>
+        </nav>
+        <!-- Hamburger Icon -->
+        <div>
+          <button>
+            <img src="./images/icon-hamburger.svg" alt="icon-hamburger" />
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero flex px-8 py-20 gap-16">
+      <section class="flex flex-row gap-16">
+        <!-- Hero Content -->
+        <article class="text-left mt-10">
+          <h1 class="text-6xl my-4">A Simple Bookmark Manager</h1>
+          <p>
+            A clean and simple interface to organize your favourite
+            <br />websites. Open a new browser tab and see your sites load
+            <br />
+            instantly. Try it for free.
+          </p>
+          <ul class="mt-10 flex items-center gap-4 flex-wrap">
+            <li>
+              <button
+                class="btn-blue text-white py-3 px-5 rounded shadow-lg hover:opacity-75"
+              >
+                Get it on Chrome
+              </button>
+            </li>
+            <li>
+              <button
+                class="bg-slate-100 text-slate-700 py-3 px-5 rounded shadow-lg hover:opacity-75"
+              >
+                Get it on Firefox
+              </button>
+            </li>
+          </ul>
+        </article>
+        <!-- Hero Image -->
+        <article class="relative">
+          <img
+            class="w-full"
+            src="./images/illustration-hero.svg"
+            alt="illustration"
+          />
+          <div
+            class="btn-blue w-[100%] h-[250px] absolute right-[-20%] bottom-0 z-[-1] rounded-tl-[200px] rounded-bl-[200px]"
+          ></div>
+        </article>
+      </section>
+    </div>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-8 py-20">
+      <section class="">
+        <article class="text-center">
+          <h2 class="text-3xl mb-7">Features</h2>
+          <p>
+            Our aim is to make it quick and easy for you to access your
+            favourite websites. Your bookmarks sync between your devices so you
+            can access them on the go.
+          </p>
+        </article>
+
+        <article class="">
+          <!-- Tabs -->
+          <div
+            class="flex justify-center space-x-4 border-b border-gray-300 mb-8 pt-8"
+            id="tabs"
+          >
+            <button class="tab-button px-4 py-2" data-tab="tab1">
+              Simple Bookmarking
+            </button>
+            <button class="tab-button px-4 py-2" data-tab="tab2">
+              Speedy Searching
+            </button>
+            <button class="tab-button px-4 py-2" data-tab="tab3">
+              Easy Sharing
+            </button>
+          </div>
+
+          <!-- Tab Content -->
+          <div id="tab-content">
+            <!-- Tab 1 -->
+            <div
+              class="tab-content flex items-center justify-center gap-28 pt-10"
+              id="tab1"
+            >
+              <div class="relative">
+                <img
+                  src="./images/illustration-features-tab-1.svg"
+                  alt="illustration-features-tab-1"
+                  class="w-full"
+                />
+                <div
+                  class="btn-blue w-[100%] h-[250px] absolute left-[-20%] top-0 z-[-1] rounded-bl-[200px] rounded-tl-[200px]"
+                ></div>
+              </div>
+              <div class="text-left">
+                <h3 class="text-2xl my-4">Organize your bookmarks</h3>
+                <p class="mb-6">
+                  Bookmark in a single click and enjoy a clutter-free
+                  experience. Our simple drag-and-drop interface helps you
+                  manage your favorite sites effortlessly.
+                </p>
+                <button class="mt-4 btn-blue text-white px-4 py-2 rounded">
+                  More Info
+                </button>
+              </div>
+            </div>
+
+            <!-- Tab 2 -->
+            <div
+              class="tab-content hidden flex items-center gap-28 pt-10"
+              id="tab2"
+            >
+              <img
+                src="/path/to/image2.jpg"
+                alt="Speedy Searching"
+                class="w-1/2 rounded"
+              />
+              <div class="text-left">
+                <h3 class="text-2xl my-4">Find what you need instantly</h3>
+                <p class="mb-6">
+                  Use our powerful search feature to find saved sites quickly.
+                  No more wasting time digging through messy folders.
+                </p>
+                <button class="mt-4 btn-blue text-white px-4 py-2 rounded">
+                  More Info
+                </button>
+              </div>
+            </div>
+
+            <!-- Tab 3 -->
+            <div
+              class="tab-content hidden flex items-center gap-28 pt-10"
+              id="tab3"
+            >
+              <img
+                src="/path/to/image3.jpg"
+                alt="Easy Sharing"
+                class="w-1/2 rounded"
+              />
+              <div class="text-left my-4">
+                <h3 class="text-2xl my-4">Share your bookmarks seamlessly</h3>
+                <p class="mb-6">
+                  Collaborate and share your bookmarks with ease. Generate
+                  shareable links at the click of a button and stay connected
+                  with your team.
+                </p>
+                <button class="mt-4 btn-blue text-white px-4 py-2 rounded">
+                  More Info
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <!-- Script -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
