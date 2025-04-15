@@ -30,11 +30,5 @@ p {
 }
 
 .bg-dark-blue {
-  background-color: hsl(229, 31%, 21%);
-}
-
-@media (min-width: 1440px) {
-  * {
-    font-size: 18px;
-  }
+  background-color: hsl(229, 31%, 21%, 0.9);
 }

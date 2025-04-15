@@ -1,30 +1,28 @@
+// TABS
 document.addEventListener("DOMContentLoaded", () => {
-  const tabs = document.querySelectorAll(".tab-button"); // Select all the tab buttons
-  const contents = document.querySelectorAll(".tab-content"); // Select all the tab content sections
+  const tabs = document.querySelectorAll(".tab-button");
+  const contents = document.querySelectorAll(".tab-content");
 
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
-      const targetTab = tab.getAttribute("data-tab"); // Get the tab's target content
+      const targetTab = tab.getAttribute("data-tab");
 
-      // Remove active styles from all tabs
       tabs.forEach((t) => {
         t.classList.remove("border-b-2", "tab-red");
-        t.classList.add("text-gray-700"); // Reset to inactive styles
+        t.classList.add("text-gray-700");
       });
 
-      // Hide all content sections
       contents.forEach((content) => content.classList.add("hidden"));
 
-      // Add active styles to the clicked tab
       tab.classList.add("border-b-2", "tab-red");
-      tab.classList.remove("text-gray-700"); // Remove the inactive style
+      tab.classList.remove("text-gray-700");
 
-      // Show the content associated with the clicked tab
       document.getElementById(targetTab).classList.remove("hidden");
     });
   });
 });
 
+// FAQS
 document.addEventListener("DOMContentLoaded", () => {
   const toggles = document.querySelectorAll(".faq-toggle");
 
@@ -37,27 +35,84 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const isExpanded = !content.classList.contains("hidden");
 
-      // Close all other FAQ items
       document.querySelectorAll(".faq-content").forEach((item) => {
-        item.classList.add("hidden"); // Hide content
+        item.classList.add("hidden");
       });
       document.querySelectorAll(".faq-question").forEach((q) => {
-        q.classList.remove("!text-red-500"); // Reset question text color
+        q.classList.remove("!text-red-500");
       });
       document.querySelectorAll(".faq-item svg path").forEach((path) => {
-        path.setAttribute("stroke", "#5267DF"); // Reset stroke color to blue
+        path.setAttribute("stroke", "#5267DF");
       });
       document.querySelectorAll(".faq-item svg").forEach((svg) => {
-        svg.classList.remove("rotate-180"); // Reset rotation
+        svg.classList.remove("rotate-180");
       });
 
-      // Toggle the clicked FAQ
       if (!isExpanded) {
-        content.classList.remove("hidden"); // Show content
-        question.classList.add("!text-red-500"); // Turn question text red
-        icon.setAttribute("stroke", "red"); // Change stroke color to red
-        faqItem.querySelector("svg").classList.add("rotate-180"); // Rotate the arrow
+        content.classList.remove("hidden");
+        question.classList.add("!text-red-500");
+        icon.setAttribute("stroke", "red");
+        faqItem.querySelector("svg").classList.add("rotate-180");
       }
     });
   });
+});
+
+// FORMS
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contact");
+  const emailInput = document.getElementById("email");
+  const errorIcon = document.getElementById("icon-error");
+  const errorMessage = document.getElementById("email-error");
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const emailValue = emailInput.value.trim();
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(emailValue)) {
+      errorIcon.classList.remove("hidden");
+      errorMessage.classList.remove("hidden");
+
+      emailInput.classList.add(
+        "tab-red",
+        "bg-red",
+        "text-white",
+        "placeholder-white",
+        "pt-6",
+        "pb-2"
+      );
+    } else {
+      errorIcon.classList.add("hidden");
+      errorMessage.classList.add("hidden");
+
+      emailInput.classList.remove(
+        "tab-red",
+        "bg-red",
+        "text-white",
+        "placeholder-white",
+        "pt-6",
+        "pb-2"
+      );
+    }
+  });
+});
+
+// CLOSE ICON
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.getElementById("menu-toggle");
+  const menuIcon = document.getElementById("menu-icon");
+  const closeIcon = document.getElementById("close-icon");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const closeMenu = document.getElementById("close-menu");
+
+  function toggleMenu() {
+    mobileMenu.classList.toggle("hidden");
+    menuIcon.classList.toggle("hidden");
+    closeIcon.classList.toggle("hidden");
+  }
+
+  menuToggle.addEventListener("click", toggleMenu);
+  closeMenu.addEventListener("click", toggleMenu);
 });
