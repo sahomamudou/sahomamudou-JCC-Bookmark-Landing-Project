@@ -1,11 +1,23 @@
 // TABS
 document.querySelectorAll(".tab-button").forEach((tab) => {
   tab.addEventListener("click", () => {
+    const targetTab = tab.getAttribute("data-tab");
+
+    // Remove active styles from all tabs
     document.querySelectorAll(".tab-button").forEach((btn) => {
-      btn.classList.remove("border-b-2", "border-red-500", "w-12", "mx-auto");
+      btn.classList.remove("border-b-2", "tab-red");
     });
 
-    tab.classList.add("border-b-2", "border-red-500", "w-12", "mx-auto");
+    // Add active style to clicked tab
+    tab.classList.add("border-b-2", "tab-red");
+
+    // Hide all tab content
+    document.querySelectorAll(".tab-content").forEach((content) => {
+      content.classList.add("hidden");
+    });
+
+    // Show the corresponding tab content
+    document.getElementById(targetTab).classList.remove("hidden");
   });
 });
 
@@ -46,29 +58,44 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // FORMS
-document.getElementById("contact").addEventListener("submit", function (event) {
-  event.preventDefault(); // Prevent form from submitting normally
-
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contact");
   const emailInput = document.getElementById("email");
-  const emailValue = emailInput.value.trim();
   const errorIcon = document.getElementById("icon-error");
   const errorMessage = document.getElementById("email-error");
 
-  // Simple Email Validation Pattern
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-  if (emailPattern.test(emailValue)) {
-    // Hide error styles if correct
-    errorIcon.classList.add("hidden");
-    errorMessage.classList.add("hidden");
+    const emailValue = emailInput.value.trim();
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // Show success notification
-    alert("✅ Success! Your email is valid.");
-  } else {
-    // Show error message if incorrect
-    errorIcon.classList.remove("hidden");
-    errorMessage.classList.remove("hidden");
-  }
+    if (!emailPattern.test(emailValue)) {
+      errorIcon.classList.remove("hidden");
+      errorMessage.classList.remove("hidden");
+
+      emailInput.classList.add(
+        "tab-red",
+        "bg-red",
+        "text-white",
+        "placeholder-white",
+        "pt-6",
+        "pb-2"
+      );
+    } else {
+      errorIcon.classList.add("hidden");
+      errorMessage.classList.add("hidden");
+
+      emailInput.classList.remove(
+        "tab-red",
+        "bg-red",
+        "text-white",
+        "placeholder-white",
+        "pt-6",
+        "pb-2"
+      );
+    }
+  });
 });
 
 // CLOSE ICON
