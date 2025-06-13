@@ -1,24 +1,11 @@
 // TABS
-document.addEventListener("DOMContentLoaded", () => {
-  const tabs = document.querySelectorAll(".tab-button");
-  const contents = document.querySelectorAll(".tab-content");
-
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-      const targetTab = tab.getAttribute("data-tab");
-
-      tabs.forEach((t) => {
-        t.classList.remove("border-b-2", "tab-red");
-        t.classList.add("text-gray-700");
-      });
-
-      contents.forEach((content) => content.classList.add("hidden"));
-
-      tab.classList.add("border-b-2", "tab-red");
-      tab.classList.remove("text-gray-700");
-
-      document.getElementById(targetTab).classList.remove("hidden");
+document.querySelectorAll(".tab-button").forEach((tab) => {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll(".tab-button").forEach((btn) => {
+      btn.classList.remove("border-b-2", "border-red-500", "w-12", "mx-auto");
     });
+
+    tab.classList.add("border-b-2", "border-red-500", "w-12", "mx-auto");
   });
 });
 
@@ -59,44 +46,29 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // FORMS
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("contact");
+document.getElementById("contact").addEventListener("submit", function (event) {
+  event.preventDefault(); // Prevent form from submitting normally
+
   const emailInput = document.getElementById("email");
+  const emailValue = emailInput.value.trim();
   const errorIcon = document.getElementById("icon-error");
   const errorMessage = document.getElementById("email-error");
 
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
+  // Simple Email Validation Pattern
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    const emailValue = emailInput.value.trim();
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (emailPattern.test(emailValue)) {
+    // Hide error styles if correct
+    errorIcon.classList.add("hidden");
+    errorMessage.classList.add("hidden");
 
-    if (!emailPattern.test(emailValue)) {
-      errorIcon.classList.remove("hidden");
-      errorMessage.classList.remove("hidden");
-
-      emailInput.classList.add(
-        "tab-red",
-        "bg-red",
-        "text-white",
-        "placeholder-white",
-        "pt-6",
-        "pb-2"
-      );
-    } else {
-      errorIcon.classList.add("hidden");
-      errorMessage.classList.add("hidden");
-
-      emailInput.classList.remove(
-        "tab-red",
-        "bg-red",
-        "text-white",
-        "placeholder-white",
-        "pt-6",
-        "pb-2"
-      );
-    }
-  });
+    // Show success notification
+    alert("✅ Success! Your email is valid.");
+  } else {
+    // Show error message if incorrect
+    errorIcon.classList.remove("hidden");
+    errorMessage.classList.remove("hidden");
+  }
 });
 
 // CLOSE ICON
